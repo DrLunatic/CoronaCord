@@ -11,7 +11,7 @@ Object.defineProperty(String.prototype, "toProperCase", {
 
 module.exports = {
   name: "corona",
-  description: "Shows stats about the corona virus.",
+  description: "Exibe informações sobre o coronavirus.",
   usage: "[country]",
   async execute (client, message, args) {
     if (!args[0]) {
@@ -22,16 +22,16 @@ module.exports = {
       countryStats.forEach(country => { todayDeaths += country.todayDeaths; todayCases += country.todayCases; });
       const activeCases = stats.cases - stats.deaths - stats.recovered;
       const embed = new Discord.MessageEmbed()
-        .setAuthor("Coronavirus Stats", client.settings.avatar)
-        .addField("Confirmed Cases", `**${stats.cases.toLocaleString()}**`, true)
-        .addField("Today Cases", `+${todayCases.toLocaleString()}`, true)
-        .addField("Today Deaths", `+${todayDeaths.toLocaleString()}`, true)
-        .addField("Active", `${activeCases.toLocaleString()} (${((activeCases / stats.cases) * 100).toFixed(2)}%)`, true)
-        .addField("Recovered", `${stats.recovered.toLocaleString()} (${((stats.recovered / stats.cases) * 100).toFixed(2)}%)`, true)
-        .addField("Deaths", `${stats.deaths.toLocaleString()} (${((stats.deaths / stats.cases) * 100).toFixed(2)}%)`, true)
+        .setAuthor("Estado do Coronavirus", client.settings.avatar)
+        .addField("Casos Confirmados", `**${stats.cases.toLocaleString()}**`, true)
+        .addField("Casos do dia", `+${todayCases.toLocaleString()}`, true)
+        .addField("Mortes do Dia", `+${todayDeaths.toLocaleString()}`, true)
+        .addField("Infectados", `${activeCases.toLocaleString()} (${((activeCases / stats.cases) * 100).toFixed(2)}%)`, true)
+        .addField("Recuperados", `${stats.recovered.toLocaleString()} (${((stats.recovered / stats.cases) * 100).toFixed(2)}%)`, true)
+        .addField("Mortes", `${stats.deaths.toLocaleString()} (${((stats.deaths / stats.cases) * 100).toFixed(2)}%)`, true)
         .setImage("https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/COVID-19_Outbreak_World_Map.svg/330px-COVID-19_Outbreak_World_Map.svg.png")
         .setColor(client.colors.main)
-        .setFooter("To see graph for this country use the new `c.graph` command.")
+        .setFooter("Para ver o gráfico do seu país use o comando `c.graph`.")
         .setTimestamp();
       message.channel.send(embed);
     } else {
@@ -72,18 +72,18 @@ module.exports = {
   
       const embed = new Discord.MessageEmbed()
         .setAuthor(country.country)
-        .addField("Confirmed Cases", `**${country.cases.toLocaleString()}**`, true)
-        .addField("Today Cases", `+${country.todayCases.toLocaleString()}`, true)
-        .addField("Today Deaths", `+${country.todayDeaths.toLocaleString()}`, true)
-        .addField("Active", `${country.active.toLocaleString()} (${((country.active / country.cases) * 100).toFixed(2)}%)`, true)
-        .addField("Recovered", `${country.recovered.toLocaleString()} (${((country.recovered / country.cases) * 100).toFixed(2)}%)`, true)
-        .addField("Deaths", `${country.deaths.toLocaleString()} (${((country.deaths / country.cases) * 100).toFixed(2)}%)`, true)
-        .addField("Cases Per Million", `${country.casesPerOneMillion.toLocaleString()}`, true)
-        .addField("Deaths Per Million", `${country.deathsPerOneMillion.toLocaleString()}`, true)
-        .addField("First Case", `${country.firstCaseDate}`, true)
+        .addField("Casos confirmados", `**${country.cases.toLocaleString()}**`, true)
+        .addField("Casos do dia", `+${country.todayCases.toLocaleString()}`, true)
+        .addField("Mortes do dia", `+${country.todayDeaths.toLocaleString()}`, true)
+        .addField("Casos confirmados", `${country.active.toLocaleString()} (${((country.active / country.cases) * 100).toFixed(2)}%)`, true)
+        .addField("Recuperados", `${country.recovered.toLocaleString()} (${((country.recovered / country.cases) * 100).toFixed(2)}%)`, true)
+        .addField("Mortes", `${country.deaths.toLocaleString()} (${((country.deaths / country.cases) * 100).toFixed(2)}%)`, true)
+        .addField("Casos por milhão", `${country.casesPerOneMillion.toLocaleString()}`, true)
+        .addField("Mortes por miulhão", `${country.deathsPerOneMillion.toLocaleString()}`, true)
+        .addField("Primeiro caso", `${country.firstCaseDate}`, true)
         .setThumbnail(`https://www.countryflags.io/${require("../../data/countries_abbreviations.json")[country.country]}/flat/64.png`)
         .setColor(client.colors.main)
-        .setFooter("View the graph of cases for this country by typing 'c.graph'")
+        .setFooter("Para ver o gráfico do seu país use o comando `c.graph`.")
         .setTimestamp();
       if (imageLink) embed.setImage(imageLink);
       message.channel.send(embed);

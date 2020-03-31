@@ -5,7 +5,7 @@ const { post } = require("snekfetch");
 
 module.exports = {
   name: "top",
-  description: "Shows the top 10 countries with the most cases of coronavirus.",
+  description: "Retorna os 10 países com mais casos de coronavirus.",
   async execute (client, message, args) {
     const msg = await message.channel.send(`${client.emojiList.loading} Fetching top countries...`);
 
@@ -18,7 +18,7 @@ module.exports = {
     }
 
     const embed = new Discord.MessageEmbed()
-      .setAuthor("Top 10 Countries with most cases of Coronavirus", client.settings.avatar)
+      .setAuthor("Top 10 países com maior casos de coronavirus", client.settings.avatar)
       .setDescription(topCountries)
       .setColor(client.colors.main);
     msg.edit("", embed);

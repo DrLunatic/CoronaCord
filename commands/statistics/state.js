@@ -41,11 +41,11 @@ module.exports = {
 
     const embed = new Discord.MessageEmbed()
       .setAuthor(state.state)
-      .addField("Confirmed Cases", `**${state.cases.toLocaleString()}**`, true)
-      .addField("Today Cases", `+${state.todayCases.toLocaleString()}`, true)
-      .addField("Today Deaths", `+${state.todayDeaths.toLocaleString()}`, true)
-      .addField("Active", `${state.active.toLocaleString()} (${((state.active / state.cases) * 100).toFixed(2)}%)`, true)
-      .addField("Deaths", `${state.deaths.toLocaleString()} (${((state.deaths / state.cases) * 100).toFixed(2)}%)`, true)
+      .addField("Casos confirmados", `**${state.cases.toLocaleString()}**`, true)
+      .addField("Casos do dia", `+${state.todayCases.toLocaleString()}`, true)
+      .addField("Mortes do dia", `+${state.todayDeaths.toLocaleString()}`, true)
+      .addField("Infectados", `${state.active.toLocaleString()} (${((state.active / state.cases) * 100).toFixed(2)}%)`, true)
+      .addField("Mortes", `${state.deaths.toLocaleString()} (${((state.deaths / state.cases) * 100).toFixed(2)}%)`, true)
       .setThumbnail(flagURL)
       .setColor(client.colors.main)
       .setTimestamp();

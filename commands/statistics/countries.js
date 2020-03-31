@@ -6,8 +6,8 @@ module.exports = {
   description: "Shows a list of supported countries and country names.",
   async execute (client, message, args) {
     const embed = new Discord.MessageEmbed()
-      .setAuthor("Supported Countries", client.settings.avatar)
-      .setTitle("All supported countries and names can be found here")
+      .setAuthor("Países suportados", client.settings.avatar)
+      .setTitle("Todos os paises e seus nomes podem ser achados aqui")
       .setURL("https://www.worldometers.info/coronavirus/#countries")
       .setColor(client.colors.main);
     message.channel.send(embed);

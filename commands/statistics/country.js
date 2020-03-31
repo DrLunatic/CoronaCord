@@ -46,18 +46,18 @@ module.exports = {
 
     const embed = new Discord.MessageEmbed()
       .setAuthor(country.country)
-      .addField("Confirmed Cases", `**${country.cases.toLocaleString()}**`, true)
-      .addField("Today Cases", `+${country.todayCases.toLocaleString()}`, true)
-      .addField("Today Deaths", `+${country.todayDeaths.toLocaleString()}`, true)
-      .addField("Active", `${country.active.toLocaleString()} (${((country.active / country.cases) * 100).toFixed(2)}%)`, true)
-      .addField("Recovered", `${country.recovered.toLocaleString()} (${((country.recovered / country.cases) * 100).toFixed(2)}%)`, true)
-      .addField("Deaths", `${country.deaths.toLocaleString()} (${((country.deaths / country.cases) * 100).toFixed(2)}%)`, true)
-      .addField("Cases Per Million", `${country.casesPerOneMillion.toLocaleString()}`, true)
-      .addField("Deaths Per Million", `${country.deathsPerOneMillion.toLocaleString()}`, true)
-      .addField("First Case", `${country.firstCaseDate}, 2020`, true)
+      .addField("Casos confirmados", `**${country.cases.toLocaleString()}**`, true)
+      .addField("Casos do dia", `+${country.todayCases.toLocaleString()}`, true)
+      .addField("Mortes do dia", `+${country.todayDeaths.toLocaleString()}`, true)
+      .addField("Infectados", `${country.active.toLocaleString()} (${((country.active / country.cases) * 100).toFixed(2)}%)`, true)
+      .addField("Recuperados", `${country.recovered.toLocaleString()} (${((country.recovered / country.cases) * 100).toFixed(2)}%)`, true)
+      .addField("Mortes", `${country.deaths.toLocaleString()} (${((country.deaths / country.cases) * 100).toFixed(2)}%)`, true)
+      .addField("Casos por milhão", `${country.casesPerOneMillion.toLocaleString()}`, true)
+      .addField("Mortes por milhão", `${country.deathsPerOneMillion.toLocaleString()}`, true)
+      .addField("Primeiro caso", `${country.firstCaseDate}, 2020`, true)
       .setThumbnail(`https://www.countryflags.io/${require("../../data/countries_abbreviations.json")[country.country]}/flat/64.png`)
       .setColor(client.colors.main)
-      .setFooter("View the graph of cases for this country by typing 'c.graph'")
+      .setFooter("Para ver o gráfico do seu país use o comando `c.graph`.")
       .setTimestamp();
     if (imageLink) embed.setImage(imageLink);
     message.channel.send(embed);
